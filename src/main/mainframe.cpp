@@ -118,66 +118,16 @@ void MainFrame::on_btnLink_clicked(void)
 
 void MainFrame::on_btnOpenPath_clicked(void)
 {
-	QString strDstTargetPath = m_ui.comboBoxTargetPath->currentText();
-	QString	strDir = QFileDialog::getExistingDirectory(this,QString::fromStdWString(L"选择文件夹"),strDstTargetPath);
-	if (strDir.isEmpty())
-	{
-		return;
-	}
-	strDir.replace("/","\\");
-	m_ui.textEditPath->setText(strDir);
+	
 }
 
 void MainFrame::on_btnOpenTarget_clicked()
 {
-	QString strDstTargetPath = m_ui.comboBoxTargetPath->currentText();
-	QString	strDir = QFileDialog::getExistingDirectory(this,QString::fromStdWString(L"选择目标文件夹"),strDstTargetPath);
-	if (strDir.isEmpty())
-	{
-		return;
-	}
-	strDir.replace("/","\\");
-	m_ui.comboBoxTargetPath->setEditText(strDir);
+	
 }
 
 void MainFrame::on_btnRevert_clicked(void)
 {
-	QString strDirPath = m_ui.textEditPath->toPlainText();
-	QString strDirBakPath = strDirPath + ".bak";
-	QString strTargetPath = _getLinkTarget(strDirPath);
-	if (strTargetPath.isEmpty())
-	{
-		QString strText = QString("Isn't link dir !");
-		::MessageBox(NULL,strText.toStdWString().c_str(),L"System Error",MB_OK|MB_ICONERROR);
-		return;
-	}
-	QDir bakDir(strDirBakPath);
-	if (!bakDir.exists())
-	{
-		QString strText = QString("Version bak dir not found !");
-		::MessageBox(NULL,strText.toStdWString().c_str(),L"System Error",MB_OK|MB_ICONERROR);
-		return;
-	}
-
-
-	BOOL bRet = RemoveDirectory(strDirPath.toStdWString().c_str());
-	if (!bRet)
-	{
-		DWORD dwError = ::GetLastError();
-		QString strText = QString("Failed to RemoveDirectory path=%1,last error=%3").arg(strDirPath).arg(dwError);
-		::MessageBox(NULL,strText.toStdWString().c_str(),L"System Error",MB_OK|MB_ICONERROR);
-		return;
-	}
-
-	bRet = MoveFile(strDirBakPath.toStdWString().c_str(),strDirPath.toStdWString().c_str());
-	if (!bRet)
-	{
-		DWORD dwError = ::GetLastError();
-		QString strText = QString("Failed to MoveFile src file=%1,dst file=%2,last error=%3").arg(strDirPath).
-			arg(strDirPath + ".bak").arg(dwError);
-		::MessageBox(NULL,strText.toStdWString().c_str(),L"System Error",MB_OK|MB_ICONERROR);
-		return;
-	}
 }
 
 void MainFrame::on_btnDelete_clicked(void)
@@ -187,38 +137,17 @@ void MainFrame::on_btnDelete_clicked(void)
 
 void MainFrame::on_checkBoxGameShowTemplateTips_clicked(bool checked)
 {
-	if (checked)
-	{
-		_writeFileData(m_strGameShowTemplateTipsFile.toStdWString().c_str(), "123");
-	}
-	else
-	{
-		_deleteFileOrDirectory(m_strGameShowTemplateTipsFile.toStdWString().c_str());
-	}
+	
 }
 
 void MainFrame::on_checkBoxEntTemplateTips_clicked(bool checked)
 {
-	if (checked)
-	{
-		_writeFileData(m_strEntTemplateTipsFile.toStdWString().c_str(), "123");
-	}
-	else
-	{
-		_deleteFileOrDirectory(m_strEntTemplateTipsFile.toStdWString().c_str());
-	}
+	
 }
 
 void MainFrame::on_checkBoxShowD_clicked(bool checked)
 {
-	if (checked)
-	{
-		_writeFileData(m_strVideosdkShowD.toStdWString().c_str(), "123");
-	}
-	else
-	{
-		_deleteFileOrDirectory(m_strVideosdkShowD.toStdWString().c_str());
-	}
+	
 }
 
 void MainFrame::on_cbbTemplateName_currentIndexChanged(const QString & text)
@@ -228,31 +157,12 @@ void MainFrame::on_cbbTemplateName_currentIndexChanged(const QString & text)
 
 void MainFrame::on_lwVersiones_itemClicked(QListWidgetItem * item)
 {
-	QString strDir = item->data(KDataDirName).toString();
-	if (strDir.isEmpty())
-	{
-		return;
-	}
-	QString strSrcDir = m_strComstorePath + "\\" + m_strCurretTemplateName + "\\" + strDir;
-	m_ui.textEditPath->setText(strSrcDir);
-
-	QString strTargetPath = _getLinkTarget(strSrcDir);
-	if (strTargetPath.isEmpty())
-	{
-		return;
-	}
-	m_ui.comboBoxTargetPath->setEditText(strTargetPath);
+	
 }
 
 void MainFrame::on_lwVersiones_itemDoubleClicked(QListWidgetItem * item)
 {
-	QString strDir = item->data(KDataDirName).toString();
-	if (strDir.isEmpty())
-	{
-		return;
-	}
-	QString strPath = m_strComstorePath + "\\" + m_strCurretTemplateName + "\\" + strDir;
-	ShellExecute(NULL,L"open",strPath.toStdWString().c_str(),NULL,NULL,SW_SHOWNORMAL);
+	
 }
 
 unsigned __stdcall MainFrame::doWatchDirThread(void *vparam)
