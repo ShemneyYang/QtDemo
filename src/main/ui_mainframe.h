@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainframe.ui'
 **
-** Created: Thu Oct 7 20:53:20 2021
+** Created: Fri Apr 15 23:05:58 2022
 **      by: Qt User Interface Compiler version 4.7.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -178,7 +178,7 @@ public:
 
     void retranslateUi(QDialog *Dialog)
     {
-        Dialog->setWindowTitle(QApplication::translate("Dialog", "MKLink", 0, QApplication::UnicodeUTF8));
+        Dialog->setWindowTitle(QApplication::translate("Dialog", "QtDemo", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("Dialog", "\344\275\215\347\275\256\357\274\232", 0, QApplication::UnicodeUTF8));
         btnOpenPath->setText(QApplication::translate("Dialog", "\346\211\223\345\274\200", 0, QApplication::UnicodeUTF8));
         label_2->setText(QApplication::translate("Dialog", "\347\233\256\346\240\207\357\274\232", 0, QApplication::UnicodeUTF8));

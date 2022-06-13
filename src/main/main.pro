@@ -25,6 +25,12 @@ PRECOMPILED_HEADER = stable.h
 # Input
 FORMS += mainframe.ui
 
+HEADERS += Utility/Locker/locker.h
+SOURCES += Utility/Locker/locker.cpp
+
+HEADERS += Utility/Log/log.h
+SOURCES += Utility/Log/log.cpp
+
 HEADERS += mainframe.h
 SOURCES += mainframe.cpp
 

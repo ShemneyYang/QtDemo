@@ -18,4 +18,6 @@
 #include <process.h>
 #include <tchar.h>
 
+#include "Utility/Log/log.h"
+
 #pragma  comment(lib, "shlwapi.lib")
